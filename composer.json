@@ -1,5 +1,5 @@
 {
-  "name": "trthanhbk/l5scaffold",
+  "name": "laraviet/l5scaffold",
   "description": "Extend Laravel 5's generators scaffold.",
   "keywords": ["laravel", "generators", "scaffold" , "laravel5"],
   "license": "MIT",
