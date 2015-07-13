@@ -1,10 +1,10 @@
 <?php
 
-namespace Trthanhbk\L5scaffold\Migrations;
+namespace Laraviet\L5scaffold\Migrations;
 
 /**
  * Class NameParser
- * @package Trthanhbk\L5scaffold\Migrations with modifications by Fernando
+ * @package Laraviet\L5scaffold\Migrations with modifications by Fernando
  * @author Jeffrey Way <jeffrey@jeffrey-way.com>
  */
 class NameParser

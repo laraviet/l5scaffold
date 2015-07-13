@@ -1,6 +1,6 @@
 <?php
 
-namespace Trthanhbk\L5scaffold;
+namespace Laraviet\L5scaffold;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -36,7 +36,7 @@ class GeneratorsServiceProvider extends ServiceProvider {
 	private function registerScaffoldGenerator()
 	{
 		$this->app->singleton('command.larascaf.scaffold', function ($app) {
-			return $app['Trthanhbk\L5scaffold\Commands\ScaffoldMakeCommand'];
+			return $app['Laraviet\L5scaffold\Commands\ScaffoldMakeCommand'];
 		});
 
 		$this->commands('command.larascaf.scaffold');

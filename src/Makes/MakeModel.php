@@ -6,11 +6,11 @@
  * Time: 10:34 PM
  */
 
-namespace Trthanhbk\L5scaffold\Makes;
+namespace Laraviet\L5scaffold\Makes;
 
 
 use Illuminate\Filesystem\Filesystem;
-use Trthanhbk\L5scaffold\Commands\ScaffoldMakeCommand;
+use Laraviet\L5scaffold\Commands\ScaffoldMakeCommand;
 
 class MakeModel {
     use MakerTrait;

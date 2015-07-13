@@ -16,7 +16,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Trthanhbk\\L5scaffold\\": "src/"
+      "Laraviet\\L5scaffold\\": "src/"
     }
   }
 }

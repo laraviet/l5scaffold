@@ -1,11 +1,11 @@
 <?php
-namespace Trthanhbk\L5scaffold\Makes;
+namespace Laraviet\L5scaffold\Makes;
 
 use Illuminate\Console\AppNamespaceDetectorTrait;
 use Illuminate\Filesystem\Filesystem;
-use Trthanhbk\L5scaffold\Commands\ScaffoldMakeCommand;
-use Trthanhbk\L5scaffold\Migrations\SchemaParser;
-use Trthanhbk\L5scaffold\Migrations\SyntaxBuilder;
+use Laraviet\L5scaffold\Commands\ScaffoldMakeCommand;
+use Laraviet\L5scaffold\Migrations\SchemaParser;
+use Laraviet\L5scaffold\Migrations\SyntaxBuilder;
 
 
 class MakeController

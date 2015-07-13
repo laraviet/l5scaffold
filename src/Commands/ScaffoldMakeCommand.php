@@ -1,18 +1,18 @@
 <?php
 
-namespace Trthanhbk\L5scaffold\Commands;
+namespace Laraviet\L5scaffold\Commands;
 
 use Illuminate\Console\AppNamespaceDetectorTrait;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Foundation\Composer;
-use Trthanhbk\L5scaffold\Makes\MakeController;
-use Trthanhbk\L5scaffold\Makes\MakeLayout;
-use Trthanhbk\L5scaffold\Makes\MakeMigration;
-use Trthanhbk\L5scaffold\Makes\MakeModel;
-use Trthanhbk\L5scaffold\Makes\MakerTrait;
-use Trthanhbk\L5scaffold\Makes\MakeSeed;
-use Trthanhbk\L5scaffold\Makes\MakeView;
+use Laraviet\L5scaffold\Makes\MakeController;
+use Laraviet\L5scaffold\Makes\MakeLayout;
+use Laraviet\L5scaffold\Makes\MakeMigration;
+use Laraviet\L5scaffold\Makes\MakeModel;
+use Laraviet\L5scaffold\Makes\MakerTrait;
+use Laraviet\L5scaffold\Makes\MakeSeed;
+use Laraviet\L5scaffold\Makes\MakeView;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
