@@ -1,13 +1,13 @@
 {
-  "name": "laralib/l5scaffold",
+  "name": "trthanhbk/l5scaffold",
   "description": "Extend Laravel 5's generators scaffold.",
   "keywords": ["laravel", "generators", "scaffold" , "laravel5"],
   "license": "MIT",
   "minimum-stability": "dev",
   "authors": [
     {
-      "name": "Fernando Brito",
-      "email": "fernandobritofl@gmail.com"
+      "name": "trthanhbk",
+      "email": "thanhcttsp@gmail.com"
     }
   ],
   "require": {
@@ -16,7 +16,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Laralib\\L5scaffold\\": "src/"
+      "Trthanhbk\\L5scaffold\\": "src/"
     }
   }
 }

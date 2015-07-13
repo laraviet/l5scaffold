@@ -6,13 +6,13 @@
  * Time: 4:58 PM
  */
 
-namespace Laralib\L5scaffold\Makes;
+namespace Trthanhbk\L5scaffold\Makes;
 
 
 use Illuminate\Filesystem\Filesystem;
-use Laralib\L5scaffold\Commands\ScaffoldMakeCommand;
-use Laralib\L5scaffold\Migrations\SchemaParser;
-use Laralib\L5scaffold\Migrations\SyntaxBuilder;
+use Trthanhbk\L5scaffold\Commands\ScaffoldMakeCommand;
+use Trthanhbk\L5scaffold\Migrations\SchemaParser;
+use Trthanhbk\L5scaffold\Migrations\SyntaxBuilder;
 
 class MakeView
 {
@@ -118,6 +118,7 @@ class MakeView
         $stub = str_replace('{{Class}}', $this->scaffoldCommandObj->getObjName('Names'), $stub);
         $stub = str_replace('{{class}}', $this->scaffoldCommandObj->getObjName('names'), $stub);
         $stub = str_replace('{{classSingle}}', $this->scaffoldCommandObj->getObjName('name'), $stub);
+        $stub = str_replace('{{ClassSingle}}', $this->scaffoldCommandObj->getObjName('Name'), $stub);
 
         return $this;
     }
@@ -195,7 +196,7 @@ class MakeView
 
 
         // Create view index content fields
-        $schema = (new SyntaxBuilder)->create($schemaArray, $this->scaffoldCommandObj->getMeta(), 'view-edit-content', $this->scaffoldCommandObj->option('form'));
+        $schema = (new SyntaxBuilder)->create($schemaArray, $this->scaffoldCommandObj->getMeta(), 'view-edit-content');
         $stub = str_replace('{{content_fields}}', $schema, $stub);
 
 
@@ -219,7 +220,7 @@ class MakeView
 
 
         // Create view index content fields
-        $schema = (new SyntaxBuilder)->create($schemaArray, $this->scaffoldCommandObj->getMeta(), 'view-create-content', $this->scaffoldCommandObj->option('form'));
+        $schema = (new SyntaxBuilder)->create($schemaArray, $this->scaffoldCommandObj->getMeta(), 'view-create-content');
         $stub = str_replace('{{content_fields}}', $schema, $stub);
 
 

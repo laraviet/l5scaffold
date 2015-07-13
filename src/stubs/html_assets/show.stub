@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layout.admin')
 
 @section('content')
     <div class="page-header">
@@ -17,13 +17,11 @@
                 {{content_fields}}
             </form>
 
-            <div class="btn-group">
-            <a class="btn btn-default" href="{{ route('{{class}}.index') }}">Back</a>
-            <a class="btn btn-warning" href="{{ route('{{class}}.edit', ${{classSingle}}->id) }}">Edit</a>
-            <form action="#/${{classSingle}}->id" method="DELETE" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
-                <button class="btn btn-danger" type="submit">Delete</button>
-            </form>
-            </div>
+
+
+            <a class="btn btn-default" href="{{ action('Admin\{{ClassSingle}}Controller@index') }}">Back</a>
+            <a class="btn btn-warning" href="{{ action('Admin\{{ClassSingle}}Controller@edit', ${{classSingle}}->id) }}">Edit</a>
+            <form action="{{ action('Admin\{{ClassSingle}}Controller@destroy', ${{classSingle}}->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };"><input type="hidden" name="_method" value="DELETE"><input type="hidden" name="_token" value="{{ csrf_token() }}"><button class="btn btn-danger" type="submit">Delete</button></form>
         </div>
     </div>
 

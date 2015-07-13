@@ -6,11 +6,11 @@
  * Time: 11:49 PM
  */
 
-namespace Laralib\L5scaffold\Makes;
+namespace Trthanhbk\L5scaffold\Makes;
 
 
 use Illuminate\Filesystem\Filesystem;
-use Laralib\L5scaffold\Commands\ScaffoldMakeCommand;
+use Trthanhbk\L5scaffold\Commands\ScaffoldMakeCommand;
 
 class MakeLayout {
     use MakerTrait;
@@ -26,6 +26,31 @@ class MakeLayout {
 
     protected function start()
     {
+        //Check Layout folder
+        $this->makeDirectory($this->getLayoutFolder());
+
+        //Check Libs folder
+        $this->makeDirectory($this->getLibsFolder());
+
+        // Preparing html_assets
+        if (! $this->files->exists($this->getAssetResource())) {
+            $this->files->copyDirectory(__DIR__ . '/../stubs/html_assets/admins', $this->getAssetResource());
+        }
+
+        //Preparing Config
+        if (! $this->files->exists($this->getConfigResource())) {
+            $this->files->copy(__DIR__ . '/../stubs/Config/error_display.php', $this->getConfigResource());
+        }
+
+        //Prepare Libs
+        if (! $this->files->exists($this->getErrorDisplayResource())) {
+            $this->files->copy(__DIR__ . '/../stubs/Libs/ErrorDisplay.php', $this->getErrorDisplayResource());
+        }
+
+        // Preparing Error Display element views
+        if (! $this->files->exists($this->getErrorDisplayViewResource())) {
+            $this->files->copyDirectory(__DIR__ . '/../stubs/error_display', $this->getErrorDisplayViewResource());
+        }
 
         if ($this->files->exists($path_resource = $this->getPathResource('layout'))) {
             if ($this->scaffoldCommandObj->confirm($path_resource . ' already exists! Do you wish to overwrite? [yes|no]')) {
@@ -64,7 +89,37 @@ class MakeLayout {
     protected function getPathResource()
     {
 
-            return './resources/views/layout.blade.php';
+            return './resources/views/layout/admin.blade.php';
 
+    }
+
+    protected function getLayoutFolder()
+    {
+
+        return './resources/views/layout';
+    }
+
+    protected function getLibsFolder()
+    {
+
+        return './config/Libs';
+    }
+
+    protected function getAssetResource()
+    {
+
+        return './public/admins';
+    }
+
+    protected function getErrorDisplayResource() {
+        return './app/Libs/ErrorDisplay.php';
+    }
+
+    protected function getErrorDisplayViewResource() {
+        return './resources/views/layout/error_display';
+    }
+
+    protected function getConfigResource() {
+        return './config/error_display.php';
     }
 }

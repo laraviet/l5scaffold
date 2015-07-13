@@ -6,13 +6,13 @@
  * Time: 10:34 PM
  */
 
-namespace Laralib\L5scaffold\Makes;
+namespace Trthanhbk\L5scaffold\Makes;
 
 
 use Illuminate\Filesystem\Filesystem;
-use Laralib\L5scaffold\Commands\ScaffoldMakeCommand;
-use Laralib\L5scaffold\Migrations\SchemaParser;
-use Laralib\L5scaffold\Migrations\SyntaxBuilder;
+use Trthanhbk\L5scaffold\Commands\ScaffoldMakeCommand;
+use Trthanhbk\L5scaffold\Migrations\SchemaParser;
+use Trthanhbk\L5scaffold\Migrations\SyntaxBuilder;
 
 class MakeMigration {
     use MakerTrait;

@@ -1,25 +1,16 @@
-@extends('app')
+@extends('layout.admin')
 
 @section('content')
     <div class="page-header">
         <h1>{{Class}} / Edit </h1>
     </div>
 
+    {!! \App\Libs\ErrorDisplay::getInstance()->displayAll($errors) !!}
 
     <div class="row">
         <div class="col-md-12">
-            @if (count($errors) > 0)
-                <div class="alert alert-danger">
-                    <p>There were some problems with your input.</p>
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
 
-            <form action="{{ route('{{class}}.update', ${{classSingle}}->id) }}" method="POST">
+            <form action="{{ action('Admin\{{ClassSingle}}Controller@update', ${{classSingle}}->id) }}" method="POST">
                 <input type="hidden" name="_method" value="PUT">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -27,11 +18,12 @@
                     <label for="nome">ID</label>
                     <p class="form-control-static">{{${{classSingle}}->id}}</p>
                 </div>
-
                 {{content_fields}}
 
-                <a class="btn btn-default" href="{{ route('{{class}}.index') }}">Back</a>
-                <button class="btn btn-primary" type="submit" >Save</button>
+
+
+            <a class="btn btn-default" href="{{ action('Admin\{{ClassSingle}}Controller@index') }}">Back</a>
+            <button class="btn btn-primary" type="submit" >Save</a>
             </form>
         </div>
     </div>

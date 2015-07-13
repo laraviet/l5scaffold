@@ -6,11 +6,11 @@
  * Time: 10:34 PM
  */
 
-namespace Laralib\L5scaffold\Makes;
+namespace Trthanhbk\L5scaffold\Makes;
 
 
 use Illuminate\Filesystem\Filesystem;
-use Laralib\L5scaffold\Commands\ScaffoldMakeCommand;
+use Trthanhbk\L5scaffold\Commands\ScaffoldMakeCommand;
 
 class MakeSeed
 {

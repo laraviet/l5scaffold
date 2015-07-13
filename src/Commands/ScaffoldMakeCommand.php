@@ -1,18 +1,18 @@
 <?php
 
-namespace Laralib\L5scaffold\Commands;
+namespace Trthanhbk\L5scaffold\Commands;
 
 use Illuminate\Console\AppNamespaceDetectorTrait;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Foundation\Composer;
-use Laralib\L5scaffold\Makes\MakeController;
-use Laralib\L5scaffold\Makes\MakeLayout;
-use Laralib\L5scaffold\Makes\MakeMigration;
-use Laralib\L5scaffold\Makes\MakeModel;
-use Laralib\L5scaffold\Makes\MakerTrait;
-use Laralib\L5scaffold\Makes\MakeSeed;
-use Laralib\L5scaffold\Makes\MakeView;
+use Trthanhbk\L5scaffold\Makes\MakeController;
+use Trthanhbk\L5scaffold\Makes\MakeLayout;
+use Trthanhbk\L5scaffold\Makes\MakeMigration;
+use Trthanhbk\L5scaffold\Makes\MakeModel;
+use Trthanhbk\L5scaffold\Makes\MakerTrait;
+use Trthanhbk\L5scaffold\Makes\MakeSeed;
+use Trthanhbk\L5scaffold\Makes\MakeView;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
@@ -152,8 +152,7 @@ class ScaffoldMakeCommand extends Command
     protected function getOptions()
     {
         return [
-            ['schema', 's', InputOption::VALUE_REQUIRED, 'Schema to generate scaffold files. (Ex: --schema="title:string")', null],
-            ['form', 'f', InputOption::VALUE_OPTIONAL, 'Use Illumintate/Html Form facade to generate input fields', false]
+            ['schema', 's', InputOption::VALUE_REQUIRED, 'Schema to generate scaffold files. (Ex: --schema="nome:title")', null],
         ];
     }
 
@@ -187,7 +186,7 @@ class ScaffoldMakeCommand extends Command
         $this->info('Dump-autoload...');
         $this->composer->dumpAutoloads();
 
-        $this->info('Route::resource("'.$this->getObjName("names").'","'.$this->getObjName("Name").'Controller"); // Add this line in routes.php');
+        $this->info('Route::resource("'.$this->getObjName("names").'","Admin\\'.$this->getObjName("Name").'Controller"); // Add this line in routes.php');
 
     }
 
@@ -232,9 +231,9 @@ class ScaffoldMakeCommand extends Command
         // Name[1] = Tweets
         $names['Names'] = str_plural(ucfirst($args_name));
         // Name[2] = tweets
-        $names['names'] = str_plural(strtolower(preg_replace('/(?<!^)([A-Z])/', '_$1', $args_name)));
+        $names['names'] = str_plural(strtolower($args_name));
         // Name[3] = tweet
-        $names['name'] = str_singular(strtolower(preg_replace('/(?<!^)([A-Z])/', '_$1', $args_name)));
+        $names['name'] = str_singular(strtolower($args_name));
 
 
         if (!isset($names[$config])) {
