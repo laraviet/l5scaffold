@@ -11,6 +11,7 @@ namespace Laraviet\L5scaffold\Makes;
 
 use Illuminate\Filesystem\Filesystem;
 use Laraviet\L5scaffold\Commands\ScaffoldMakeCommand;
+use Laraviet\L5scaffold\Migrations\SchemaParser;
 
 class MakeModel {
     use MakerTrait;
@@ -31,11 +32,7 @@ class MakeModel {
         $modelPath = $this->getPath($name, 'model');
 
         //Make Request
-        if (! $this->files->exists($this->getRequestResource($name))) {
-            $stub = $this->files->get(__DIR__ . '/../stubs/Requests/request.stub');
-            $stub = str_replace('{{Class}}', $name, $stub);
-            $this->files->put($this->getRequestResource($name), $stub);
-        }
+        $this->makeRequest($name);
 
         if (! $this->files->exists($modelPath)) {
             $this->scaffoldCommandObj->call('make:model', [
@@ -49,6 +46,28 @@ class MakeModel {
     {
 
         return './app/Http/Requests/' . $name . 'Request.php';
+    }
+
+    protected function makeRequest($name) {
+        if (! $this->files->exists($this->getRequestResource($name))) {
+
+            $stub = $this->files->get(__DIR__ . '/../stubs/Requests/request.stub');
+            $stub = str_replace('{{Class}}', $name, $stub);
+
+            //Build default required validation rules
+            if ($schema = $this->scaffoldCommandObj->option('schema')) {
+                $schema = (new SchemaParser)->parse($schema);
+            }
+            $rules = "";
+            if ($schema) {
+                foreach ($schema as $field) {
+                    $rules .= "\n" . str_repeat(' ', 12). "\"" . $field["name"] . "\" => " . "\"required\",";
+                }
+            }
+            $stub = str_replace('{{rules}}', $rules, $stub);
+
+            $this->files->put($this->getRequestResource($name), $stub);
+        }
     }
 
 }

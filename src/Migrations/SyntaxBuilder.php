@@ -220,7 +220,6 @@ class SyntaxBuilder
     private function addColumn($field, $type = "migration", $meta = "")
     {
 
-
         if ($type == 'migration') {
 
             $syntax = sprintf("\$table->%s('%s')", $field['type'], $field['name']);
@@ -262,23 +261,31 @@ class SyntaxBuilder
 
 
         } elseif ($type == 'view-edit-content') {
-
+            if ($field["type"] == "text") {
+                $content = "<textarea name=\"%s\" class=\"form-control\">{{ \App\Libs\ValueHelper::getOldInput(\$%s,'%s') }}</textarea>\n";
+            } else {
+                $content = "<input type=\"text\" name=\"%s\" class=\"form-control\" value=\"{{ \App\Libs\ValueHelper::getOldInput(\$%s,'%s') }}\"/>\n";
+            }
             // Fields to show view
             $syntax = sprintf("<div class=\"form-group\">\n" .
                 str_repeat(' ', 21)."<label for=\"%s\">%s</label>\n" .
-                str_repeat(' ', 21)."<input type=\"text\" name=\"%s\" class=\"form-control\" value=\"{{\$%s->%s}}\"/>\n" .
+                str_repeat(' ', 21). $content .
                 str_repeat(' ', 21)."{!! \App\Libs\ErrorDisplay::getInstance()->displayIndividual(\$errors, \"%s\") !!}\n" .
                 str_repeat(' ', 16)."</div>", strtolower($field['name']), strtoupper($field['name']), strtolower($field['name']), $meta['var_name'], strtolower($field['name']), strtolower($field['name']));
 
 
         } elseif ($type == 'view-create-content') {
-
+            if ($field["type"] == "text") {
+                $content = "<textarea name=\"%s\" class=\"form-control\">{{ Session::getOldInput('%s') }}</textarea>\n";
+            } else {
+                $content = "<input type=\"text\" name=\"%s\" class=\"form-control\" value=\"{{  Session::getOldInput('%s') }}\"/>\n";
+            }
             // Fields to show view
             $syntax = sprintf("<div class=\"form-group\">\n" .
                 str_repeat(' ', 21)."<label for=\"%s\">%s</label>\n" .
-                str_repeat(' ', 21)."<input type=\"text\" name=\"%s\" class=\"form-control\" value=\"\"/>\n" .
+                str_repeat(' ', 21). $content .
                 str_repeat(' ', 21)."{!! \App\Libs\ErrorDisplay::getInstance()->displayIndividual(\$errors, \"%s\") !!}\n" .
-                str_repeat(' ', 16)."</div>", strtolower($field['name']), strtoupper($field['name']), strtolower($field['name']), strtolower($field['name']));
+                str_repeat(' ', 16)."</div>", strtolower($field['name']), strtoupper($field['name']), strtolower($field['name']), strtolower($field['name']), strtolower($field['name']));
 
 
         } else {

@@ -23,7 +23,7 @@ class {{Class}}Request extends Request
      */
     public function rules()
     {
-        return [
+        return [{{rules}}
         ];
     }
 }

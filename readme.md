@@ -25,7 +25,7 @@ Open `config/app.php` and, to your **providers** array at the bottom, add:
 
 You're all set. Run `php artisan` from the console, and you'll see the new commands `make:scaffold`.
 
-## Examples
+#### Examples
 
 
 ```
@@ -35,6 +35,7 @@ This command will generate:
 
 ```
 app/Tweet.php
+app/Http/Requests/TweetRequest.php
 app/Http/Controllers/TweetController.php
 database/migrations/2015_04_23_234422_create_tweets_table.php
 database/seeds/TweetTableSeeder.php
@@ -50,8 +51,34 @@ And don't forget to run:
 php artisan migrate
 ```
 
+### Step 4: Add Validation Rules!
 
-## Scaffold
-![image](http://i62.tinypic.com/11maveb.png)
-![image](http://i58.tinypic.com/eqchat.png)
-![image](http://i62.tinypic.com/20h7k8n.png)
+Open `app/Http/Requests/TweetRequest.php` and add validation rules at rules() method
+
+```
+public function rules()
+{
+    return [
+    	"title" => "required",
+    	"body" => "required"
+    ];
+}
+```
+
+### Step 5: Customize How Validation Error Message Display!
+
+Open `config/error_display.php` and update config:
+
+```
+"box" => false, //Display all validation error message in the top of page as box
+"line" => true, //Display error message line by line
+```
+
+Views location for error message: `resources/views/layout/error_display/`
+
+## Scaffold Screenshot
+![image](http://i59.tinypic.com/2mr8obk.png)
+
+![image](http://i57.tinypic.com/2dqqb2r.png)
+
+![image](http://i62.tinypic.com/30ruvdk.png)

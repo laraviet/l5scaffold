@@ -46,6 +46,10 @@ class MakeLayout {
         if (! $this->files->exists($this->getErrorDisplayResource())) {
             $this->files->copy(__DIR__ . '/../stubs/Libs/ErrorDisplay.php', $this->getErrorDisplayResource());
         }
+        //Prepare Libs
+        if (! $this->files->exists($this->getValueHelperResource())) {
+            $this->files->copy(__DIR__ . '/../stubs/Libs/ValueHelper.php', $this->getValueHelperResource());
+        }
 
         // Preparing Error Display element views
         if (! $this->files->exists($this->getErrorDisplayViewResource())) {
@@ -113,6 +117,10 @@ class MakeLayout {
 
     protected function getErrorDisplayResource() {
         return './app/Libs/ErrorDisplay.php';
+    }
+
+    protected function getValueHelperResource() {
+        return './app/Libs/ValueHelper.php';
     }
 
     protected function getErrorDisplayViewResource() {
