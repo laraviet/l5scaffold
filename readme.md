@@ -36,14 +36,18 @@ This command will generate:
 ```
 app/Tweet.php
 app/Http/Requests/TweetRequest.php
-app/Http/Controllers/TweetController.php
+app/Http/Controllers/Admin/TweetController.php
+app/Libs/ErrorDisplay.php
+app/Libs/ValueHelper.php
 database/migrations/2015_04_23_234422_create_tweets_table.php
 database/seeds/TweetTableSeeder.php
-resources/views/layout.blade.php
-resources/views/tweets/index.blade.php
-resources/views/tweets/show.blade.php
-resources/views/tweets/edit.blade.php
-resources/views/tweets/create.blade.php
+resources/views/layout/admin.blade.php
+resources/views/layout/error_display/all_errors.blade.php
+resources/views/layout/error_display/field_errors.blade.php
+resources/views/admin/tweets/index.blade.php
+resources/views/admin/tweets/show.blade.php
+resources/views/admin/tweets/edit.blade.php
+resources/views/admintweets/create.blade.php
 ```
 And don't forget to run:
 
