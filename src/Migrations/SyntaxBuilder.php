@@ -261,7 +261,7 @@ class SyntaxBuilder
 
 
         } elseif ($type == 'view-edit-content') {
-            if ($field["type"] == "text") {
+            if (trim($field["type"]) == "text") {
                 $content = "<textarea name=\"%s\" class=\"form-control\">{{ \App\Libs\ValueHelper::getOldInput(\$%s,'%s') }}</textarea>\n";
             } else {
                 $content = "<input type=\"text\" name=\"%s\" class=\"form-control\" value=\"{{ \App\Libs\ValueHelper::getOldInput(\$%s,'%s') }}\"/>\n";
@@ -275,7 +275,7 @@ class SyntaxBuilder
 
 
         } elseif ($type == 'view-create-content') {
-            if ($field["type"] == "text") {
+            if (trim($field["type"]) == "text") {
                 $content = "<textarea name=\"%s\" class=\"form-control\">{{ Session::getOldInput('%s') }}</textarea>\n";
             } else {
                 $content = "<input type=\"text\" name=\"%s\" class=\"form-control\" value=\"{{  Session::getOldInput('%s') }}\"/>\n";

@@ -30,7 +30,7 @@ class MakeLayout {
         $this->makeDirectory($this->getLayoutFolder());
 
         //Check Libs folder
-        $this->makeDirectory($this->getLibsFolder());
+        $this->makeDirectory($this->getErrorDisplayResource());
 
         // Preparing html_assets
         if (! $this->files->exists($this->getAssetResource())) {
@@ -101,12 +101,6 @@ class MakeLayout {
     {
 
         return './resources/views/layout';
-    }
-
-    protected function getLibsFolder()
-    {
-
-        return './config/Libs';
     }
 
     protected function getAssetResource()

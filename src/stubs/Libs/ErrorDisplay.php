@@ -17,6 +17,9 @@ class ErrorDisplay
         return self::$instance;
     }
 
+    /**
+    * Display validation error msg in top page in box style
+    */
     public function displayAll($errors)
     {
         if (\Config::get("error_display.box"))
@@ -25,6 +28,9 @@ class ErrorDisplay
             return "";
     }
 
+    /**
+    * Display validation error msg line by line
+    */
     public function displayIndividual($errors, $field)
     {
         if (\Config::get("error_display.line"))
