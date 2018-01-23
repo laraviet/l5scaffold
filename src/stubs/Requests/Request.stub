@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
+use Illuminate\Http\Request;
 
 class {{Class}}Request extends Request
 {
