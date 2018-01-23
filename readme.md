@@ -3,7 +3,8 @@
 
 This is a scaffold generator for Laravel 5.
 
-##NOTE
+## NOTE
+
 For Laravel 5.2 or below, please use version [1.0.8](https://github.com/laraviet/l5scaffold/tree/1.0.8)
 
 ## Usage
