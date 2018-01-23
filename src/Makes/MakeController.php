@@ -1,7 +1,7 @@
 <?php
 namespace Laraviet\L5scaffold\Makes;
 
-use Illuminate\Console\AppNamespaceDetectorTrait;
+use Illuminate\Console\DetectsApplicationNamespace;
 use Illuminate\Filesystem\Filesystem;
 use Laraviet\L5scaffold\Commands\ScaffoldMakeCommand;
 use Laraviet\L5scaffold\Migrations\SchemaParser;
@@ -10,7 +10,7 @@ use Laraviet\L5scaffold\Migrations\SyntaxBuilder;
 
 class MakeController
 {
-    use AppNamespaceDetectorTrait, MakerTrait;
+    use DetectsApplicationNamespace, MakerTrait;
 
 
 

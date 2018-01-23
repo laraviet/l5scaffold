@@ -2,10 +2,10 @@
 
 namespace Laraviet\L5scaffold\Commands;
 
-use Illuminate\Console\AppNamespaceDetectorTrait;
+use Illuminate\Console\DetectsApplicationNamespace;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Foundation\Composer;
+use Illuminate\Support\Composer;
 use Laraviet\L5scaffold\Makes\MakeController;
 use Laraviet\L5scaffold\Makes\MakeLayout;
 use Laraviet\L5scaffold\Makes\MakeMigration;
@@ -18,7 +18,7 @@ use Symfony\Component\Console\Input\InputArgument;
 
 class ScaffoldMakeCommand extends Command
 {
-    use AppNamespaceDetectorTrait, MakerTrait;
+    use DetectsApplicationNamespace, MakerTrait;
 
     /**
      * The console command name.

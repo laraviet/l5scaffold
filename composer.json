@@ -18,5 +18,12 @@
     "psr-4": {
       "Laraviet\\L5scaffold\\": "src/"
     }
-  }
+  },
+  "extra": {
+        "laravel": {
+            "providers": [
+                "Laraviet\\L5scaffold\\GeneratorsServiceProvider"
+            ]
+        }
+    }
 }
